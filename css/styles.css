@@ -22,7 +22,7 @@
   /*шрифти*/
   --main-font: "Roboto", sans-serif;
   --secondary-font: "Raleway", sans-serif;
-  
+
   /*колір*/
   --client-border: #afb1b8;
   --portfolio-br-card: #eeeeee;
@@ -31,9 +31,9 @@
   --main-colot-wight: #ffffff;
   --butter-shadow: #188ce8;
   --butter-portfolio: #f5f4fa;
-
+  --overlay-bgc: rgba(33, 150, 243, 0.9);
   /*тіні*/
-  --foto-card:rgba(47, 48, 58, 0.8);
+  --foto-card: rgba(47, 48, 58, 0.8);
   --icon-shadow: rgba(255, 255, 255, 0.1);
   --hero-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
@@ -95,14 +95,14 @@ ul {
 }
 
 /*приховою заголовки*/
-.visually-hidden  {
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
@@ -241,6 +241,7 @@ ul {
 .nav-item-studio,
 .nav-item-portfolio,
 .nav-item-contact {
+
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -262,7 +263,26 @@ ul {
 }
 
 .current {
+  position: relative;
+
   color: var(--hover-txt);
+}
+
+.current::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  transform: translateY(34px);
+
+  width: 100%;
+  height: 4px;
+  display: inline-block;
+  margin-right: 10px;
+
+  background-color: var(--hover-txt);
+  border-radius: 2px;
 }
 
 /*відступи*/
@@ -288,7 +308,7 @@ ul {
   background-color: var(--background-colot);
 
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-  url(../images/hero/Img-hero.jpg);
+    url(../images/hero/Img-hero.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -467,7 +487,7 @@ ul {
 
   color: var(--secondary-txt);
 
- 
+
   margin-top: 10px;
 }
 
@@ -491,21 +511,21 @@ ul {
 }
 
 /*іконки соцмереж*/
- .team-icon-list {
+.team-icon-list {
   display: flex;
   margin-top: 16px;
 }
 
 .team-card {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .team-icon-item {
   margin-right: 10px;
-} 
+}
 
 .team-icon-item:last-child {
   margin: 0;
@@ -529,9 +549,9 @@ ul {
 
 .team-icon-link:hover,
 .team-icon-link:focus {
-background: var(--hover-txt);
-fill: var(--main-colot-wight);
-border-radius: 50%;
+  background: var(--hover-txt);
+  fill: var(--main-colot-wight);
+  border-radius: 50%;
 }
 
 /*ПОРТФОЛІО*/
@@ -570,18 +590,6 @@ border-radius: 50%;
   color: var(--main-txt);
 }
 
-.portfolio-link {
-  text-decoration: none;
-  display: block;
-
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.portfolio-link:hover,
-.portfolio-link:focus {
- box-shadow: var(--shadow-portfolio-card);
-}
 
 .portfolio-text {
   font-weight: normal;
@@ -599,6 +607,8 @@ border-radius: 50%;
 .portfolio-list {
   display: flex;
   justify-content: center;
+
+  margin-bottom: 50px;
 }
 
 .portfolio-list-foto {
@@ -611,13 +621,56 @@ border-radius: 50%;
   margin-top: -30px;
 }
 
-/*відступи*/
-.portfolio-item {
-  margin-right: 8px;
+.portfolio-link {
+
+  position: relative;
+  overflow: hidden;
+
+  text-decoration: none;
+  display: block;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-list {
-  margin-bottom: 50px;
+.portfolio-link:hover,
+.portfolio-link:focus {
+  box-shadow: var(--shadow-portfolio-card);
+}
+
+
+
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 63px 24px;
+  background-color: var(--overlay-bgc);
+
+  transition: transform 250ms;
+
+}
+
+.portfolio-desc {
+  color: var(--main-colot-wight);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+}
+
+.portfolio-item-foto:hover .portfolio-overlay {
+  transform: translateY(0);
 }
 
 .portfolio-item-foto {
@@ -625,6 +678,10 @@ border-radius: 50%;
 
   margin-left: 30px;
   margin-top: 30px;
+}
+
+.portfolio-item {
+  margin-right: 8px;
 }
 
 .prf-box {
@@ -762,8 +819,8 @@ border-radius: 50%;
 }
 
 .footer-section {
-display: inline-block;
-margin-left: 70px;
+  display: inline-block;
+  margin-left: 70px;
 }
 
 .footer-list {
@@ -778,7 +835,3 @@ margin-left: 70px;
 .footer-item:last-child {
   margin: 0;
 }
-
-
-
-
