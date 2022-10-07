@@ -52,6 +52,7 @@
     0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 
   /*колір тексту*/
+
   --footer-txt: rgba(255, 255, 255, 0.6);
   --secondary-txt: #757575;
   --main-txt: #212121;
@@ -134,6 +135,7 @@ ul {
 /*діви*/
 .container {
   width: 1200px;
+  height: auto;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -166,9 +168,9 @@ ul {
   justify-content: center;
   align-items: center;
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .header-link {
@@ -259,9 +261,9 @@ ul {
   text-decoration: none;
   color: var(--main-txt);
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .nav-item-studio:hover,
@@ -356,8 +358,8 @@ ul {
   margin-left: auto;
   padding: 10px 32px;
 
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time);
+  transition-timing-function: var(--timing-function);
 }
 
 .hero-button:hover,
@@ -554,9 +556,9 @@ ul {
   background: var(--main-colot-wight);
   border-radius: 50%;
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: color, background-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .team-icon-link:hover,
@@ -582,9 +584,9 @@ ul {
 
   padding: 6px 22px;
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: color, background-color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .portfolio-btn:hover,
@@ -642,13 +644,14 @@ ul {
   text-decoration: none;
   display: block;
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
-.portfolio-link:hover .portfolio-overlay {
+.portfolio-item-foto:hover .portfolio-overlay {
   transform: translateY(0);
+  transition: transform var(--time) var(--timing-function);
 }
 
 .portfolio-overlay {
@@ -667,9 +670,9 @@ ul {
   padding: 63px 24px;
   background-color: var(--overlay-bgc);
 
-  transition-property: color, cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: color, var(--timing-function);
   ;
-  transition: transform 250ms;
+  transition: transform var(--time);
 
 }
 
@@ -679,16 +682,18 @@ ul {
   line-height: 1.56;
 }
 
-.portfolio-item-foto:hover,
-.portfolio-item-foto:focus {
-  box-shadow: var(--shadow-portfolio-card);
-}
-
 .portfolio-item-foto {
   flex-basis: calc(100% / 3 - 30px);
 
   margin-left: 30px;
   margin-top: 30px;
+
+  transition: box-shadow var(--time) var(--timing-function);
+}
+
+.portfolio-item-foto:hover,
+.portfolio-item-foto:focus {
+  box-shadow: var(--shadow-portfolio-card);
 }
 
 .portfolio-item {
@@ -719,9 +724,9 @@ ul {
   border-radius: 4px;
   color: var(--client-border);
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: color, border-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 /*hover*/
@@ -757,8 +762,8 @@ ul {
 
 .footer-address-link,
 .footer-contact-link {
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time);
+  transition-timing-function: var(--timing-function);
 }
 
 
@@ -820,9 +825,9 @@ ul {
   background: var(--icon-shadow);
   border-radius: 50%;
 
-  transition-duration: 250ms;
+  transition-duration: var(--time);
   transition-property: background-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .footer-icons:hover,
@@ -866,7 +871,7 @@ ul {
   visibility: visible;
   pointer-events: initial;
 
-  transition: opacity 250ms, cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms;
+  transition: opacity var(--time), var(--timing-function), visibility var(--time);
 }
 
 .backdrop.is-hidden {
